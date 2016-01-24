@@ -1,0 +1,18 @@
+<section [class]="class">
+
+  <div *ngIf="comments && !label_hidden">
+    {{ title_prefix }}
+    <h2 [class]="title_class" >{{ label }}</h2>
+    {{ title_suffix }}
+  </div>
+
+  <angular2-comment-list [comments]="comments"></angular2-comment-list>
+
+  <div *ngIf="comment_form">
+    <h2 class="title comment-form__title">{{ 'Add new comment'| t }}</h2>
+    
+    <angular2-comment-form></angular2-comment-form>
+    
+  </div>
+
+</section>
