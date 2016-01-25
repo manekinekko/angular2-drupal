@@ -1,11 +1,16 @@
 
 import {bootstrap} from 'angular2/platform/browser';
-import {Component, Pipe, PipeTransform} from 'angular2/core';
+import {
+	Component, 
+	Pipe, 
+	PipeTransform,
+	Input
+} from 'angular2/core';
 
 @Pipe({
 	name: 't'
 })
-class TwigPipe implements PipeTransform {
+class TwigTranslatePipe implements PipeTransform {
 	transform(value: string, args: string[]): any {
 		return value;
 	}
@@ -15,7 +20,7 @@ class TwigPipe implements PipeTransform {
 	selector: 'angular2-comment-list',
 	template: 'angular2-comment-list'
 })
-class NgCommentList {
+class DrupalCommentList {
 
 }
 
@@ -23,44 +28,44 @@ class NgCommentList {
 	selector: 'angular2-comment-form',
 	template: 'angular2-comment-form'
 })
-class NgCommentForm {
+class DrupalCommentForm {
 
 }
 
 @Component({
 	selector: 'angular2-comment-field',
 	templateUrl: '/core/themes/classy/templates/field/field--comment.html.ng2',
-	pipes: [TwigPipe],
-	directives: [NgCommentList, NgCommentForm]
+	directives: [DrupalCommentList, DrupalCommentForm],
+	pipes: [TwigTranslatePipe],
+	inputs: ['classes']
 })
-class NgCommentField {
+class DrupalCommentField {
 
-	private class: string = [
-    'field',
-    'field--name-',
-    'field--type-',
-    'field--label-',
-    'comment-wrapper'
-  ].join(' ');
+	@Input('field-name') field_name: string = '';
+	@Input('field-type') field_type: string = '';
+	@Input('label-display') label_display: string = '';
+	
+	//@Input('classes') classes: string = '';
+	@Input('title-classes') title_classes: string = '';
 
-  private title_classes: string = [
-		'title',
-		'visually-hidden'
-	].join(' ');
+	@Input('label-hidden') label_hidden: boolean = true;
+	@Input('label') label: string = 'Angular 2 comments';
+	@Input('title-prefix') title_prefix: string = '';
+	@Input('title-suffix') title_suffix: string = '';
 
-	private label_hidden: boolean = true;
-	private label: string = 'Angular 2 comments';
-	private title_prefix: string = 'prefix_';
-	private title_suffix: string = '_suffix';
+	constructor() {}
+	ngOnChanges() {
+		setTimeout(_ => console.log(this.classes), 2000);
+	}
 
 }
 
 @Component({
 	selector: 'angular2-comment',
 	template: '<angular2-comment-field></angular2-comment-field>',
-	directives: [NgCommentField]
+	directives: [DrupalCommentField]
 })
-class NgCommentsApp {}
+class DrupalCommentsApp {}
 
-bootstrap(NgCommentsApp, [])
+bootstrap(DrupalCommentsApp, [])
   .catch(err => console.error(err));
