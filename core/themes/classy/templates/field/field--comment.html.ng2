@@ -1,4 +1,4 @@
-<section [class]="class">
+<section [class]="classes">
 
   <div *ngIf="comments && !label_hidden">
     {{ title_prefix }}
@@ -12,7 +12,7 @@
     <h2 class="title comment-form__title">{{ 'Add new comment'| t }}</h2>
     
     <angular2-comment-form></angular2-comment-form>
-    
+
   </div>
 
 </section>

@@ -41,20 +41,40 @@
   ]
 %}
 
-<angular2-comment></angular2-comment>
+<angular2-comment
 
-<section{{ attributes.addClass(classes) }}>
-  {% if comments and not label_hidden %}
-    {{ title_prefix }}
-    <h2{{ title_attributes.addClass(title_classes) }}>{{ label }}</h2>
-    {{ title_suffix }}
-  {% endif %}
+  [field-name]="{{ field_name }}"
+  [field-type]="{{ field_type }}"
+  [label-display]="{{ label_display }}"
+  [label-hidden]="{{ label_hidden?'true':'false' }}"
+  
+{#
+  [comments]="{{ comments|striptags|join }}"
+  [commentform]="{{ comment_form|striptags|join }}"
+#}
 
-  {{ comments }}
+  [title-classes]="{{ title_classes|join(' ') }}"
+  [title-prefix]="{{ title_prefix|join(' ') }}"
+  [title-suffix]="{{ title_suffix|join(' ') }}"
+  [classes]="{{ classes|join(' ') }}"
+  [label]="{{ label }}"
 
-  {% if comment_form %}
-    <h2 class="title comment-form__title">{{ 'Add new comment'|t }}</h2>
-    {{ comment_form }}
-  {% endif %}
+>
+  
+  <section{{ attributes.addClass(classes) }}>
+    {% if comments and not label_hidden %}
+      {{ title_prefix }}
+      <h2{{ title_attributes.addClass(title_classes) }}>{{ label }}</h2>
+      {{ title_suffix }}
+    {% endif %}
 
-</section>
+    {{ comments }}
+
+    {% if comment_form %}
+      <h2 class="title comment-form__title">{{ 'Add new comment'|t }}</h2>
+      {{ comment_form }}
+    {% endif %}
+
+  </section>
+
+</angular2-comment>
