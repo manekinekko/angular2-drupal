@@ -39,13 +39,14 @@
     <css-placeholder token="{{ placeholder_token|raw }}">
     <js-placeholder token="{{ placeholder_token|raw }}">
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/swig/1.4.1/swig.js"></script>
+    <script src="/core/assets/vendor/angular2/twig-0.8.7.js"></script>
+    <script src="/core/assets/vendor/angular2/twig-custom.js"></script>
     <script src="https://code.angularjs.org/2.0.0-beta.1/angular2-polyfills.js"></script>
     <script src="https://code.angularjs.org/tools/system.js"></script>
     <script src="https://code.angularjs.org/tools/typescript.js"></script>
     <script src="/core/assets/vendor/angular2/config.js"></script>
     <script src="https://code.angularjs.org/2.0.0-beta.1/Rx.js"></script>
-    <script src="https://code.angularjs.org/2.0.0-beta.1/angular2.min.js"></script>
+    <script src="/core/assets/vendor/angular2/angular2.0.0-beta.1.js"></script>
     <script src="https://code.angularjs.org/2.0.0-beta.1/http.min.js"></script>
     <script>
     System.import('app')
@@ -58,7 +59,7 @@
       {{ 'Skip to main content'|t }}
     </a>
     {{ page_top }}
-    {{ page }}
+      {{ page }}
     {{ page_bottom }}
     <js-bottom-placeholder token="{{ placeholder_token|raw }}">
   </body>

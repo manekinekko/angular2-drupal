@@ -6,11 +6,13 @@
     {{ title_suffix }}
   </div>
 
+  <!-- "comments" would be a separate component -->
   <angular2-comment-list [comments]="comments"></angular2-comment-list>
 
   <div *ngIf="comment_form">
     <h2 class="title comment-form__title">{{ 'Add new comment'| t }}</h2>
     
+    <!-- "form" would be a separate component -->
     <angular2-comment-form></angular2-comment-form>
 
   </div>

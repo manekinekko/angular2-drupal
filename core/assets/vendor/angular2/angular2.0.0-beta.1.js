@@ -19653,6 +19653,15 @@ System.register("angular2/src/compiler/template_normalizer", ["angular2/src/comp
       } else if (lang_1.isPresent(template.templateUrl)) {
         var sourceAbsUrl = this._urlResolver.resolve(directiveType.moduleUrl, template.templateUrl);
         return this._xhr.get(sourceAbsUrl).then(function(templateContent) {
+
+          var _isTwig = template.templateUrl.endsWith('.twig');
+          if(_isTwig) {
+            templateContent = twig({
+              data: templateContent
+            }).render(new directiveType.runtime());
+          }
+          //debugger;
+
           return _this.normalizeLoadedTemplate(directiveType, template, templateContent, sourceAbsUrl);
         });
       } else {
